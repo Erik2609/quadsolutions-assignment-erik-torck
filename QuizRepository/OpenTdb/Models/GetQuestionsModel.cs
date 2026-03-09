@@ -2,12 +2,12 @@
 
 namespace QuizRepository.OpenTdb.Models
 {
-    internal class GetQuestionsModel
+    public class GetQuestionsModel
     {
         [JsonPropertyName("response_code")]
-        internal string ResponseCode { get; set; } = string.Empty;
+        public int ResponseCode { get; set; } = 0;
 
         [JsonPropertyName("results")]
-        internal IEnumerable<QuestionModel> Results { get; set; } = [];
+        public IEnumerable<QuestionModel> Results { get; set; } = [];
     }
 }

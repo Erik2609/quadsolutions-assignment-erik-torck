@@ -2,7 +2,7 @@
 
 namespace QuizRepository.OpenTdb.Models
 {
-    internal class QuestionModel
+    public class QuestionModel
     {
         [JsonPropertyName("question")]
         public string Question { get; set; } = string.Empty;

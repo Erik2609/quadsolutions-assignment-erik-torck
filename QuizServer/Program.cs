@@ -12,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // DI
-builder.Services.AddScoped<IGetQuestionsRepository, OpenTdbRepository>();
+builder.Services.AddSingleton<IGetQuestionsRepository, CachedGetQuestionsRepositoryWrapper>((sp) =>
+new CachedGetQuestionsRepositoryWrapper(new OpenTdbRepository()));
 builder.Services.AddScoped<ICheckAnswersService, CheckAnswersService>();
 builder.Services.AddScoped<IGetQuestionsService, GetQuestionsService>();
 
