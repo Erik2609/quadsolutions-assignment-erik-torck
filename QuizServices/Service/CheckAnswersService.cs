@@ -1,7 +1,7 @@
 ﻿using QuizRepository;
-using QuizServer.Models;
+using QuizServices.Models;
 
-namespace QuizServer.Service
+namespace QuizServices.Service
 {
     public class CheckAnswersService : ICheckAnswersService
     {

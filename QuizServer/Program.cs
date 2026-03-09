@@ -1,6 +1,6 @@
 using QuizRepository;
 using QuizRepository.OpenTdb;
-using QuizServer.Service;
+using QuizServices.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

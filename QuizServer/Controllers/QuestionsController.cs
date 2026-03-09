@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using QuizServer.Models;
-using QuizServer.Service;
+using QuizServices.Models;
+using QuizServices.Service;
 
 namespace QuizServer.Controllers
 {

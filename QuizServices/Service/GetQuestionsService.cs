@@ -1,8 +1,8 @@
 ﻿using QuizRepository;
-using QuizServer.Mappers;
-using QuizServer.Models;
+using QuizServices.Mappers;
+using QuizServices.Models;
 
-namespace QuizServer.Service
+namespace QuizServices.Service
 {
     public class GetQuestionsService : IGetQuestionsService
     {

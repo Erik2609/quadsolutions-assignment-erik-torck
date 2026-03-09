@@ -1,4 +1,4 @@
-﻿namespace QuizServer.Models
+﻿namespace QuizServices.Models
 {
     public class CheckAnswerModel
     {

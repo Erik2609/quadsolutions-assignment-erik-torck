@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuizRepository\QuizRepository.csproj" />
+    <ProjectReference Include="..\QuizServices\QuizServices.csproj" />
   </ItemGroup>
 
 </Project>

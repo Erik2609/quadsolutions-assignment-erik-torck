@@ -1,6 +1,6 @@
-﻿using QuizServer.Models;
+﻿using QuizServices.Models;
 
-namespace QuizServer.Mappers
+namespace QuizServices.Mappers
 {
     public static class QuestionsModelMapper
     {
