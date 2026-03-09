@@ -4,6 +4,6 @@ namespace QuizServer.Models
     {
         public int Id { get; set; }
         public string Question { get; set; } = string.Empty;
-        public string[] PossibleAnswers { get; set; } = [];
+        public IEnumerable<string> PossibleAnswers { get; set; } = [];
     }
 }

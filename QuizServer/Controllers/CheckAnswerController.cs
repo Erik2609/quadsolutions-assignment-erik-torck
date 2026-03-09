@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuizServer.Models;
+using QuizServer.Service;
 
 namespace QuizServer.Controllers
 {
@@ -8,15 +9,18 @@ namespace QuizServer.Controllers
     public class CheckAnswerController : ControllerBase
     {
         private readonly ILogger<QuestionsController> _logger;
-        public CheckAnswerController(ILogger<QuestionsController> logger)
+        private readonly ICheckAnswersService _checkAnswersService;
+
+        public CheckAnswerController(ILogger<QuestionsController> logger, ICheckAnswersService checkAnswersService)
         {
             _logger = logger;
+            _checkAnswersService = checkAnswersService;
         }
 
         [HttpPost(Name = "checkanswers")]
-        public IEnumerable<IsAnswerCorrectModel> Post(IEnumerable<CheckAnswerModel> model)
+        public async Task<IEnumerable<IsAnswerCorrectModel>> Post(IEnumerable<CheckAnswerModel> model)
         {
-            throw new NotImplementedException();
+            return await _checkAnswersService.CheckAnswerAsync(model);
         }
     }
 }

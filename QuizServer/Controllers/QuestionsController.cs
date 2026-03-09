@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using QuizServer.Models;
+using QuizServer.Service;
 
 namespace QuizServer.Controllers
 {
@@ -8,15 +9,18 @@ namespace QuizServer.Controllers
     public class QuestionsController : ControllerBase
     {
         private readonly ILogger<QuestionsController> _logger;
-        public QuestionsController(ILogger<QuestionsController> logger)
+        private readonly IGetQuestionsService _getQuestionsService;
+
+        public QuestionsController(ILogger<QuestionsController> logger, IGetQuestionsService getQuestionsService)
         {
             _logger = logger;
+            _getQuestionsService = getQuestionsService;
         }
 
         [HttpGet(Name = "questions")]
-        public IEnumerable<QuestionModel> Get()
+        public async Task<IEnumerable<QuestionModel>> Get()
         {
-            throw new NotImplementedException();
+            return await _getQuestionsService.GetQuestions();
         }
     }
 }
