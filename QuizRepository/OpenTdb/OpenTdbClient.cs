@@ -6,7 +6,7 @@ namespace QuizRepository.OpenTdb
     internal class OpenTdbClient
     {
         // TODO move endpoint to appsettings
-        internal async Task<GetQuestionsModel> GetQuestionsAsync(string apiEndpoint = "https://opentdb.com/api.php?amount=10&category=13")
+        internal async Task<GetQuestionsModel> GetQuestionsAsync(string apiEndpoint = "https://opentdb.com/api.php?amount=10&category=13&encode=url3986")
         {
             var httpClient = new HttpClient();
 
