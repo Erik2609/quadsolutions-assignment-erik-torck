@@ -37,7 +37,8 @@ namespace QuizServices.Service
                 {
                     Id = answerToCheck.Id,
                     IsCorrect = answerToCheck.Answer.Equals(matchingQuestion.CorrectAnswer,
-                    StringComparison.OrdinalIgnoreCase)
+                    StringComparison.OrdinalIgnoreCase),
+                    CorrectAnswer = matchingQuestion.CorrectAnswer
                 });
             }
 

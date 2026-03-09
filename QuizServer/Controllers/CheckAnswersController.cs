@@ -6,21 +6,28 @@ namespace QuizServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CheckAnswerController : ControllerBase
+    public class CheckAnswersController : ControllerBase
     {
         private readonly ILogger<QuestionsController> _logger;
         private readonly ICheckAnswersService _checkAnswersService;
 
-        public CheckAnswerController(ILogger<QuestionsController> logger, ICheckAnswersService checkAnswersService)
+        public CheckAnswersController(ILogger<QuestionsController> logger, ICheckAnswersService checkAnswersService)
         {
             _logger = logger;
             _checkAnswersService = checkAnswersService;
         }
 
         [HttpPost(Name = "checkanswers")]
-        public async Task<IEnumerable<IsAnswerCorrectModel>> Post(IEnumerable<CheckAnswerModel> model)
+        public async Task<IEnumerable<IsAnswerCorrectModel>> Post([FromBody] IEnumerable<CheckAnswerModel> model)
         {
             return await _checkAnswersService.CheckAnswerAsync(model);
+        }
+
+        [HttpOptions(Name = "checkanswers")]
+        public IActionResult Options()
+        {
+            Response.Headers.Add("Allow", "POST, OPTIONS");
+            return Ok();
         }
     }
 }

@@ -3,6 +3,16 @@ using QuizRepository.OpenTdb;
 using QuizServices.Service;
 
 var builder = WebApplication.CreateBuilder(args);
+// CORS, I would obviously never do this on production code, but for the sake of demo purposes I enabled everything.
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        });
+});
+
 
 // Add services to the container.
 
@@ -31,6 +41,11 @@ if (app.Environment.IsProduction())
 {
     app.UseHttpsRedirection();
 }
+
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthorization();
 

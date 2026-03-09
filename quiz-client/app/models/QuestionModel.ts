@@ -1,6 +1,5 @@
-interface Question {
+export interface QuestionModel {
   id: number;
   question: string;
   possibleAnswers: string[];
 }
-export default Question;
