@@ -80,9 +80,11 @@ export default function Home() {
       }
     >
       {questionViewModels.map((question) => (
-        <>
-          <fieldset key={question.id.toString()}>
-            <legend>{decodeURIComponent(question.question)}</legend>
+        <div key={question.id.toString()}>
+          <fieldset>
+            <legend className="questionTitle">
+              {decodeURIComponent(question.question)}
+            </legend>
             {question.possibleAnswers.map((answer) => (
               <div key={answer}>
                 <input
@@ -92,6 +94,7 @@ export default function Home() {
                   value={answer}
                   disabled={question.givenAnswer !== undefined}
                   defaultChecked={question.givenAnswer === answer}
+                  required
                 />
                 <label htmlFor={question.id.toString() + answer}>
                   {decodeURIComponent(answer)}
@@ -101,19 +104,22 @@ export default function Home() {
           </fieldset>
           {question.correctAnswer &&
             question.givenAnswer === question.correctAnswer && (
-              <div>Correct!</div>
+              <div className="correct">Correct!</div>
             )}
           {question.correctAnswer &&
             question.givenAnswer !== question.correctAnswer && (
-              <div>
+              <div className="incorrect">
                 Incorrect! The correct answer is{" "}
                 {decodeURIComponent(question.correctAnswer)}
               </div>
             )}
-        </>
+          <br />
+        </div>
       ))}
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-success">
+        Submit
+      </button>
     </Form>
   );
 }

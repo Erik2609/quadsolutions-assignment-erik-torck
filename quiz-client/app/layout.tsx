@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="container">
+          <div className="row">{children}</div>
+        </div>
       </body>
     </html>
   );
