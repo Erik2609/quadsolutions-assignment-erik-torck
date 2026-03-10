@@ -1,6 +1,8 @@
+using Polly;
 using QuizRepository;
 using QuizRepository.OpenTdb;
 using QuizServices.Service;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 // CORS, I would obviously never do this on production code, but for the sake of demo purposes I enabled everything.
@@ -22,8 +24,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // DI
-builder.Services.AddSingleton<IGetQuestionsRepository, CachedGetQuestionsRepositoryWrapper>((sp) =>
-new CachedGetQuestionsRepositoryWrapper(new OpenTdbRepository()));
+builder.Services.AddScoped<IOpenTdbClient, OpenTdbClient>();
+builder.Services.AddHttpClient<IOpenTdbClient, OpenTdbClient>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
+builder.Services.AddSingleton<IGetQuestionsRepository, OpenTdbRepository>();
+builder.Services.Decorate<IGetQuestionsRepository, CachedGetQuestionsRepositoryDecorator>();
 builder.Services.AddScoped<ICheckAnswersService, CheckAnswersService>();
 builder.Services.AddScoped<IGetQuestionsService, GetQuestionsService>();
 

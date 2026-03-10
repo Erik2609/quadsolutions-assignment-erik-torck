@@ -1,12 +1,12 @@
 ﻿using QuizRepository.Models;
 
-namespace QuizRepository.OpenTdb
+namespace QuizRepository
 {
-    public class CachedGetQuestionsRepositoryWrapper : IGetQuestionsRepository
+    public class CachedGetQuestionsRepositoryDecorator : IGetQuestionsRepository
     {
         private readonly IGetQuestionsRepository getQuestionsRepository;
         private QuestionsModel? cachedQuestions;
-        public CachedGetQuestionsRepositoryWrapper(IGetQuestionsRepository getQuestionsRepository)
+        public CachedGetQuestionsRepositoryDecorator(IGetQuestionsRepository getQuestionsRepository)
         {
             this.getQuestionsRepository = getQuestionsRepository;
         }

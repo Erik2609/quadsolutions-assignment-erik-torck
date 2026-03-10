@@ -1,16 +1,23 @@
-﻿using QuizRepository.OpenTdb.Models;
+﻿using Microsoft.Extensions.Configuration;
+using QuizRepository.OpenTdb.Models;
 using System.Net.Http.Json;
 
 namespace QuizRepository.OpenTdb
 {
-    internal class OpenTdbClient
+    public class OpenTdbClient : IOpenTdbClient
     {
-        // TODO move endpoint to appsettings
-        internal async Task<GetQuestionsModel> GetQuestionsAsync(string apiEndpoint = "https://opentdb.com/api.php?amount=3&category=13&encode=url3986")
+        private readonly string _apiEndpoint;
+        private readonly HttpClient _httpClient;
+        public OpenTdbClient(HttpClient httpClient, IConfiguration configuration)
         {
-            var httpClient = new HttpClient();
+            _httpClient = httpClient;
+            _apiEndpoint = configuration["OpenTdbApiEndpoint"] ?? throw new Exception("OpenTdbApiEndpoint is not configured in appsettings.json");
+        }
 
-            var response = await httpClient.GetAsync(apiEndpoint);
+        public async Task<GetQuestionsModel> GetQuestionsAsync()
+        {
+
+            var response = await _httpClient.GetAsync(_apiEndpoint);
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"Failed to get questions from OpenTDB API. Status code: {response.StatusCode}");
