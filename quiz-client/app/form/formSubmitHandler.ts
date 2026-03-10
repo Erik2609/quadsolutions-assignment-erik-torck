@@ -14,7 +14,7 @@ export function formSubmitHandler(
     const checkAnswerModels =
       formDataMapper.mapFormDataToCheckAnswerModel(formData);
     setCheckAnswerModels(checkAnswerModels);
-    fetch("http://localhost:5183/CheckAnswers", {
+    fetch("https://quizservereriktorck.azurewebsites.net/CheckAnswers", {
       method: "POST",
       body: JSON.stringify(checkAnswerModels),
       headers: {

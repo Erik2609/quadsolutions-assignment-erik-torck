@@ -21,7 +21,7 @@ export default function Home() {
 
   // Fetch questions on initial load
   if (questions.length === 0 && errors.length === 0) {
-    fetch("http://localhost:5183/questions")
+    fetch("https://quizservereriktorck.azurewebsites.net/questions")
       .then((data) => {
         data
           .json()
