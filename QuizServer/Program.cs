@@ -1,8 +1,8 @@
 using Polly;
+using Polly.Extensions.Http;
 using QuizRepository;
 using QuizRepository.OpenTdb;
 using QuizServices.Service;
-using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 // CORS, I would obviously never do this on production code, but for the sake of demo purposes I enabled everything.
@@ -25,7 +25,9 @@ builder.Services.AddSwaggerGen();
 
 // DI
 builder.Services.AddScoped<IOpenTdbClient, OpenTdbClient>();
-builder.Services.AddHttpClient<IOpenTdbClient, OpenTdbClient>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
+builder.Services.AddHttpClient<IOpenTdbClient, OpenTdbClient>()
+    .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+    .AddPolicyHandler(GetRetryPolicy());
 builder.Services.AddSingleton<IGetQuestionsRepository, OpenTdbRepository>();
 builder.Services.Decorate<IGetQuestionsRepository, CachedGetQuestionsRepositoryDecorator>();
 builder.Services.AddScoped<ICheckAnswersService, CheckAnswersService>();
@@ -56,3 +58,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+{
+    return HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
+                                                                    retryAttempt * 2)));
+}
