@@ -38,7 +38,7 @@ export default function Home() {
 
   // Show loading state if questions are still being fetched
   if (questions.length === 0 && errors.length === 0) {
-    return <div>Loading...</div>;
+    return <h1>Loading...</h1>;
   }
 
   // Show errors if there are any
@@ -51,6 +51,12 @@ export default function Home() {
             <li key={index}>{error}</li>
           ))}
         </ul>
+        <button
+          className="btn btn-warning"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
       </div>
     );
   }
