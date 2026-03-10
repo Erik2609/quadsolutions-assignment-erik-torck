@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ErrorComponent } from "./errors/ErrorComponent";
 import { FormComponent } from "./form/FormComponent";
 import { formSubmitHandler } from "./formSubmitHandler";
 import { questionViewModelMapper } from "./mappers/questionViewModelMapper";
@@ -47,22 +48,7 @@ export default function Home() {
 
   // Show errors if there are any
   if (errors.length > 0) {
-    return (
-      <div>
-        <h1>Errors:</h1>
-        <ul>
-          {errors.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
-        <button
-          className="btn btn-warning"
-          onClick={() => window.location.reload()}
-        >
-          Reload
-        </button>
-      </div>
-    );
+    return <ErrorComponent errors={errors} />;
   }
 
   const questionViewModels = questions.map((question) =>
