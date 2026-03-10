@@ -22,12 +22,5 @@ namespace QuizServer.Controllers
         {
             return await _checkAnswersService.CheckAnswerAsync(model);
         }
-
-        [HttpOptions(Name = "checkanswers")]
-        public IActionResult Options()
-        {
-            Response.Headers.Add("Allow", "POST, OPTIONS");
-            return Ok();
-        }
     }
 }
