@@ -5,6 +5,9 @@ namespace QuizRepository.Tests.OpenTdb.Mappers
 {
     public class QuestionMapperTests
     {
+        /// <summary>
+        /// Please not that the answers should be ordered to not expose the correct anwser.
+        /// </summary>
         [Test]
         public void QuestionMapper_ShouldMapCorrectly()
         {
