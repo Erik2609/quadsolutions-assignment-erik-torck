@@ -1,6 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
+### Getting Started
 
 First, run the development server:
 
@@ -15,9 +13,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-Nextjs doesn't allow an unsafe https request, cmd the followning to allow it:
-
-export NODE_TLS_REJECT_UNAUTHORIZED=0 - Mac
-set NODE_TLS_REJECT_UNAUTHORIZED=0 - windows
-export NODE_TLS_REJECT_UNAUTHORIZED=0 - linux
