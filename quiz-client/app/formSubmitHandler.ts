@@ -1,18 +1,18 @@
-import { FormDataMapper } from "./mappers/FormDataMapper";
-import { CheckAnswerModel } from "./models/CheckAnswerModel";
-import { IsAnswerCorrectModel } from "./models/IsAnswerCorrectModel";
+import { formDataMapper } from "./mappers/formDataMapper";
+import { checkAnswerModel } from "./models/checkAnswerModel";
+import { isAnswerCorrectModel } from "./models/isAnswerCorrectModel";
 
-export function FormSubmitHandler(
+export function formSubmitHandler(
   formData: FormData,
   setCheckAnswerModels: React.Dispatch<
-    React.SetStateAction<CheckAnswerModel[]>
+    React.SetStateAction<checkAnswerModel[]>
   >,
-  setAnswers: React.Dispatch<React.SetStateAction<IsAnswerCorrectModel[]>>,
+  setAnswers: React.Dispatch<React.SetStateAction<isAnswerCorrectModel[]>>,
   setErrors: React.Dispatch<React.SetStateAction<string[]>>,
 ) {
   {
     const checkAnswerModels =
-      FormDataMapper.mapFormDataToCheckAnswerModel(formData);
+      formDataMapper.mapFormDataToCheckAnswerModel(formData);
     setCheckAnswerModels(checkAnswerModels);
     fetch("http://localhost:5183/CheckAnswers", {
       method: "POST",

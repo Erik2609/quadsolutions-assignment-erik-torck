@@ -1,4 +1,4 @@
-export interface QuestionModel {
+export interface questionModel {
   id: number;
   question: string;
   possibleAnswers: string[];

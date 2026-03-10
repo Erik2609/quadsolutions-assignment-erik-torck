@@ -1,10 +1,10 @@
-import { CheckAnswerModel } from "../models/CheckAnswerModel";
-import { IsAnswerCorrectModel } from "../models/IsAnswerCorrectModel";
-import { QuestionModel } from "../models/QuestionModel";
-import { QuestionViewModel } from "../viewmodels/QuestionViewModel";
+import { checkAnswerModel } from "../models/checkAnswerModel";
+import { isAnswerCorrectModel } from "../models/isAnswerCorrectModel";
+import { questionModel } from "../models/questionModel";
+import { questionViewModel } from "../viewmodels/questionViewModel";
 
-export class QuestionViewModelMapper {
-  static toViewModel(question: QuestionModel): QuestionViewModel {
+export class questionViewModelMapper {
+  static toViewModel(question: questionModel): questionViewModel {
     return {
       id: question.id,
       question: question.question,
@@ -14,8 +14,8 @@ export class QuestionViewModelMapper {
     };
   }
   static addGivenAnswerToViewModel(
-    questionViewModel: QuestionViewModel,
-    givenAnswers: CheckAnswerModel[],
+    questionViewModel: questionViewModel,
+    givenAnswers: checkAnswerModel[],
   ): void {
     const matchingAnswer = givenAnswers.find(
       (answer) => answer.id === questionViewModel.id,
@@ -26,8 +26,8 @@ export class QuestionViewModelMapper {
     questionViewModel.givenAnswer = matchingAnswer.answer;
   }
   static addAnswerToViewModel(
-    questionViewModel: QuestionViewModel,
-    IsAnswerCorrectModels: IsAnswerCorrectModel[],
+    questionViewModel: questionViewModel,
+    IsAnswerCorrectModels: isAnswerCorrectModel[],
   ): void {
     const matchingModel = IsAnswerCorrectModels.find(
       (model) => model.id === questionViewModel.id,

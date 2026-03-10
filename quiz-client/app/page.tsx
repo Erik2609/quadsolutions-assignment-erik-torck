@@ -2,18 +2,18 @@
 
 import Form from "next/form";
 import { useState } from "react";
-import { FormSubmitHandler } from "./FormSubmitHandler";
-import { QuestionViewModelMapper } from "./mappers/QuestionViewModelMapper";
-import { CheckAnswerModel } from "./models/CheckAnswerModel";
-import { IsAnswerCorrectModel } from "./models/IsAnswerCorrectModel";
-import { QuestionModel } from "./models/QuestionModel";
+import { formSubmitHandler } from "./formSubmitHandler";
+import { questionViewModelMapper } from "./mappers/questionViewModelMapper";
+import { checkAnswerModel } from "./models/checkAnswerModel";
+import { isAnswerCorrectModel } from "./models/isAnswerCorrectModel";
+import { questionModel } from "./models/questionModel";
 
 export default function Home() {
-  const [questions, setQuestions] = useState<QuestionModel[]>([]);
+  const [questions, setQuestions] = useState<questionModel[]>([]);
   const [checkAnswerModels, setCheckAnswerModels] = useState<
-    CheckAnswerModel[]
+    checkAnswerModel[]
   >([]);
-  const [isAnswerCorrectModels, setAnswers] = useState<IsAnswerCorrectModel[]>(
+  const [isAnswerCorrectModels, setAnswers] = useState<isAnswerCorrectModel[]>(
     [],
   );
   const [errors, setErrors] = useState<string[]>([]);
@@ -56,17 +56,17 @@ export default function Home() {
   }
 
   const questionViewModels = questions.map((question) =>
-    QuestionViewModelMapper.toViewModel(question),
+    questionViewModelMapper.toViewModel(question),
   );
   questionViewModels.forEach((viewModel) => {
     if (!!checkAnswerModels) {
-      QuestionViewModelMapper.addGivenAnswerToViewModel(
+      questionViewModelMapper.addGivenAnswerToViewModel(
         viewModel,
         checkAnswerModels,
       );
     }
     if (!!isAnswerCorrectModels) {
-      QuestionViewModelMapper.addAnswerToViewModel(
+      questionViewModelMapper.addAnswerToViewModel(
         viewModel,
         isAnswerCorrectModels,
       );
@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <Form
       action={(formData) =>
-        FormSubmitHandler(formData, setCheckAnswerModels, setAnswers, setErrors)
+        formSubmitHandler(formData, setCheckAnswerModels, setAnswers, setErrors)
       }
     >
       {questionViewModels.map((question) => (

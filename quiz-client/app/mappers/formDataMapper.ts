@@ -1,8 +1,8 @@
-import { CheckAnswerModel } from "../models/CheckAnswerModel";
+import { checkAnswerModel } from "../models/checkAnswerModel";
 
-export class FormDataMapper {
-  static mapFormDataToCheckAnswerModel(formData: FormData): CheckAnswerModel[] {
-    const checkAnswerModels: CheckAnswerModel[] = [];
+export class formDataMapper {
+  static mapFormDataToCheckAnswerModel(formData: FormData): checkAnswerModel[] {
+    const checkAnswerModels: checkAnswerModel[] = [];
     formData.forEach((answer, key) => {
       if (typeof answer !== "string") {
         throw new Error(
