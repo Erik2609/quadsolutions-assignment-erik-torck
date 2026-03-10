@@ -1,6 +1,6 @@
-import { formDataMapper } from "./mappers/formDataMapper";
-import { checkAnswerModel } from "./models/checkAnswerModel";
-import { isAnswerCorrectModel } from "./models/isAnswerCorrectModel";
+import { formDataMapper } from "../mappers/formDataMapper";
+import { checkAnswerModel } from "../models/checkAnswerModel";
+import { isAnswerCorrectModel } from "../models/isAnswerCorrectModel";
 
 export function formSubmitHandler(
   formData: FormData,

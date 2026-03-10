@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ErrorComponent } from "./errors/ErrorComponent";
 import { FormComponent } from "./form/FormComponent";
-import { formSubmitHandler } from "./formSubmitHandler";
+import { formSubmitHandler } from "./form/formSubmitHandler";
 import { questionViewModelMapper } from "./mappers/questionViewModelMapper";
 import { checkAnswerModel } from "./models/checkAnswerModel";
 import { isAnswerCorrectModel } from "./models/isAnswerCorrectModel";
