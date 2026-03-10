@@ -36,11 +36,11 @@ export function FormComponent({
           </fieldset>
           {question.correctAnswer &&
             question.givenAnswer === question.correctAnswer && (
-              <div className="correct">Correct!</div>
+              <div className="correct text-center">Correct!</div>
             )}
           {question.correctAnswer &&
             question.givenAnswer !== question.correctAnswer && (
-              <div className="incorrect">
+              <div className="incorrect text-center">
                 Incorrect! The correct answer is{" "}
                 {decodeURIComponent(question.correctAnswer)}
               </div>

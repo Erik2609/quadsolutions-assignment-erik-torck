@@ -1,7 +1,7 @@
 export function ErrorComponent({ errors }: { errors: string[] }) {
   return (
     <div>
-      <h1>Errors:</h1>
+      <h3>Errors:</h3>
       <ul>
         {errors.map((error, index) => (
           <li key={index}>{error}</li>

@@ -29,7 +29,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="container">
-          <div className="row">{children}</div>
+          <div className="row justify-content-center">
+            <div className="col-6">
+              <h1 className="text-center">Quiz App</h1>
+              <h2 className="text-center">by Erik Torck</h2>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-6">{children}</div>
+          </div>
         </div>
       </body>
     </html>
