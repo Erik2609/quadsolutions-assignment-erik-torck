@@ -1,5 +1,15 @@
 # quadsolutions-assignment-erik-torck
 
+## Online variant:
+
+### Frontend:
+
+https://kind-dune-00ef0be03.6.azurestaticapps.net/
+
+### Backend:
+
+https://quizservereriktorck.azurewebsites.net/questions
+
 ## Backend
 
 1. Load the backend project QuizServer
