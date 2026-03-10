@@ -24,9 +24,10 @@ namespace QuizRepository.OpenTdb
             }
 
             var questionsModel = await response.Content.ReadFromJsonAsync<GetQuestionsModel>();
-            if (questionsModel == null)
+            if (questionsModel == null
+                || questionsModel.Results.Count() == 0)
             {
-                throw new Exception("Failed to deserialize questions from OpenTDB API.");
+                throw new InvalidDataException("Failed to deserialize questions from OpenTDB API.");
             }
 
             return questionsModel;

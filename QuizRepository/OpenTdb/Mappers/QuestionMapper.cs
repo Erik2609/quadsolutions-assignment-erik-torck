@@ -2,9 +2,9 @@
 
 namespace QuizRepository.OpenTdb.Mappers
 {
-    internal static class QuestionMapper
+    public static class QuestionMapper
     {
-        internal static QuizRepository.Models.QuestionModel Map(QuestionModel question, int id)
+        public static QuizRepository.Models.QuestionModel Map(QuestionModel question, int id)
         {
             return new QuizRepository.Models.QuestionModel
             {
@@ -15,7 +15,7 @@ namespace QuizRepository.OpenTdb.Mappers
             };
         }
 
-        internal static QuizRepository.Models.QuestionsModel Map(GetQuestionsModel questions)
+        public static QuizRepository.Models.QuestionsModel Map(GetQuestionsModel questions)
         {
             var model = new QuizRepository.Models.QuestionsModel();
 
