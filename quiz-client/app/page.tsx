@@ -32,7 +32,11 @@ export default function Home() {
           });
       })
       .catch((err) => {
-        setErrors((prev) => [...prev, err.message]);
+        setErrors((prev) => [
+          ...prev,
+          err.message,
+          "(During the demo, this probably means the server is not running)",
+        ]);
       });
   }
 
