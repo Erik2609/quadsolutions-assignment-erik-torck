@@ -15,6 +15,10 @@ namespace QuizServer.Controllers
             _getQuestionsService = getQuestionsService;
         }
 
+        /// <summary>
+        /// Retrieves a list of quiz questions.
+        /// </summary>
+        /// <returns>A list of questions</returns>
         [HttpGet(Name = "questions")]
         public async Task<IEnumerable<QuestionModel>> Get()
         {
