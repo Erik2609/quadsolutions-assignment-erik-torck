@@ -12,8 +12,8 @@ https://quizservereriktorck.azurewebsites.net/questions
 
 ## Backend
 
-1. Load the backend project QuizServer
-2. Build and start the server.
+1. Load the Solution QuizServer
+2. Build and start the server. (requires .net 8)
    The server should be running on: http://localhost:5183/
 
 ## Frontend
