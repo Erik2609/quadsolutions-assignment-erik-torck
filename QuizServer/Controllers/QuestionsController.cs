@@ -8,12 +8,10 @@ namespace QuizServer.Controllers
     [Route("[controller]")]
     public class QuestionsController : ControllerBase
     {
-        private readonly ILogger<QuestionsController> _logger;
         private readonly IGetQuestionsService _getQuestionsService;
 
-        public QuestionsController(ILogger<QuestionsController> logger, IGetQuestionsService getQuestionsService)
+        public QuestionsController(IGetQuestionsService getQuestionsService)
         {
-            _logger = logger;
             _getQuestionsService = getQuestionsService;
         }
 
